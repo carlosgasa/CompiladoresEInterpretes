@@ -1,0 +1,11 @@
+CONST MAX = 5; // Esta es una constante
+VAR num,
+ suma;
+INICIO
+ LEER num;
+SI (num < MAX) 
+ INICIO
+ suma = num * (10 + 7) / 2;
+ ESCRIBIR suma
+ FIN
+FIN.
