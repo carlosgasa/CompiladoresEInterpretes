@@ -18,8 +18,12 @@ public class Compilador{
 			 if(buffer != null) System.out.println("#TOKEN\t\tLEXEMA");//Imprimir el nombre de las columnas, si se logro abrir el archivo,sino pasa hasta el catch
 			 do {
 				 token = analizador.nextToken();//Avanzar al siguiente token, extrayendolo de a
-				 if(token.token.equals(""))
-				 System.out.println(token.tipo +"\t\t" +token.token); //Token tiene las propiedades  (int numToken,String token, String tipo, int linea, int columna)
+				 if(esLexema(token.token)){
+					System.out.println(token.tipo +"\t\t" +token.token); //Token tiene las propiedades  (int numToken,String token, String tipo, int linea, int columna)
+				}
+				else{
+					System.out.println(token.tipo);
+				} 
 			} while (token != null);															//																contador de tokens, token,    tipo de token, linea,    columna
 		}
 		catch (Exception ex) {
@@ -27,8 +31,8 @@ public class Compilador{
 		} 
 	}
 	
-	public static boolean esLexema(String token){
-		return true;
+	public static boolean esLexema(String token){//Este metodo solo es para entender mejor el contexto del programa
+		return !tokens.contains(token);
 	}
 	
 	public static void cargarTokens(){
@@ -63,4 +67,5 @@ public class Compilador{
 		tokens.add("*");
 		tokens.add("/");
 	}
+	
 }
