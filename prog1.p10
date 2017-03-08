@@ -1,11 +1,14 @@
+{ ESTE PROGRAMA ES UNA MUESTRA
+ DEL LENGUAJE PL/0
+}
 CONST MAX = 5; // Esta es una constante
 VAR num,
- suma;
+suma;
 INICIO
- LEER num;
-SI (num < MAX) 
- INICIO
- suma = num * (10 + 7) / 2;
- ESCRIBIR suma
- FIN
+	LEER num;
+	SI (num < MAX) 
+	INICIO
+		suma = num * (10 + 7) / 2;
+		ESCRIBIR suma
+	FIN
 FIN.
