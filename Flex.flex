@@ -36,7 +36,7 @@ class Yytoken {
 /* Seccion de opciones y declaraciones de JFlex */
 %% //inicio de opciones
 //Cambiamos el nombre la funcion para el siguiente token por nextToken
-%function nextToken 
+%function nextToken
 //Clase publica
 %public
 //Cambiamos el nombre de la clase del analizador
@@ -90,7 +90,9 @@ NUMERO=({EXP_DIGITO})+
 IDENTIFICADOR={EXP_ALPHA}({EXP_ALPHANUMERIC})*
 ESPACIO=" "
 COMENTARIO_LINEAL=\/\/.*
+COMENTARIO_BLOQUE=\{(\*(\/)|[^}])*\}
 SALTO=\n|\r|\r\n
+TABULADOR=\t
 //fin declaraciones
 
 /* Seccion de reglas lexicas */
@@ -302,4 +304,10 @@ SALTO=\n|\r|\r\n
 }
 {COMENTARIO_LINEAL} {
 	//IGNORAR COMENTARIO LINEAL
+}
+{TABULADOR} {
+	//IGNORAR UN TABULADOR
+}
+{COMENTARIO_BLOQUE} {
+	//IGNORAR COMENTARIOS MULTILINEAS
 }
