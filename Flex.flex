@@ -36,7 +36,7 @@ class Yytoken {
 /* Seccion de opciones y declaraciones de JFlex */
 %% //inicio de opciones
 //Cambiamos el nombre la funcion para el siguiente token por nextToken
-%function nextToken
+%function nextToken 
 //Clase publica
 %public
 //Cambiamos el nombre de la clase del analizador
