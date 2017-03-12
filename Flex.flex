@@ -93,6 +93,7 @@ COMENTARIO_LINEAL=\/\/.*
 COMENTARIO_BLOQUE=\{(\*(\/)|[^}])*\}
 SALTO=\n|\r|\r\n
 TABULADOR=\t
+TOKEN_DESCONOCIDO=[^a-zA-Z0-9.=,;()&#<>+-/\/{}\*\t ]
 //fin declaraciones
 
 /* Seccion de reglas lexicas */
@@ -287,20 +288,11 @@ TABULADOR=\t
 }
 
 /*Los metacaracteres es necesario usar la secuencia de escape */
-"\^"  {
-    contador++;
-    Yytoken t = new Yytoken(contador,yytext(),"potencia",yyline,yycolumn);
-    tokens.add(t);
-    return t;
-}
 {ESPACIO} {
  	//ignorar
 }
 {SALTO} {
-   /* contador++;
-    Yytoken t = new Yytoken(contador,"","fin_linea",yyline,yycolumn);
-    tokens.add(t);
-    return t;*/
+   //iGNORAR
 }
 {COMENTARIO_LINEAL} {
 	//IGNORAR COMENTARIO LINEAL
@@ -310,4 +302,10 @@ TABULADOR=\t
 }
 {COMENTARIO_BLOQUE} {
 	//IGNORAR COMENTARIOS MULTILINEAS
+}
+{TOKEN_DESCONOCIDO} {
+	contador++;
+    Yytoken t = new Yytoken(contador,yytext(),"-1",yyline,yycolumn);
+    tokens.add(t);
+    return t;
 }
