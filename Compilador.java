@@ -7,6 +7,7 @@ public class Compilador{
 
 	private static ArrayList<String> tokens = new ArrayList<String>();
 	private static ArrayList<String> lineas = new ArrayList<String>();
+	private static ArrayList<Simbolo> tablaSimbolos = new ArrayList<>();
 	private static String nombreCodigo = "prog1.p10";
 	
 	public static void main(String[] args){
@@ -25,6 +26,7 @@ public class Compilador{
 				 token = analizador.nextToken();//Avanzar al siguiente token, extrayendolo de analizador
 				 if(!token.tipo.equals("-1")){//Ver si hay un token desconocido
 					if(esLexema(token.token)){
+						tablaSimbolos.add(new Simbolo(token.token, token.tipo));//Agregar a la tabla de simbolos
 						System.out.println(token.tipo +"\t\t" +token.token); //Token tiene las propiedades  (int numToken,String token, String tipo, int linea, int columna)
 																																															//contador de tokens, token,    tipo de token, linea,    columna#E31010
 					}
@@ -102,3 +104,4 @@ public class Compilador{
 		"\n" + localizacion + "^";
 	}
 }
+
