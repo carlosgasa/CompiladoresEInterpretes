@@ -15,14 +15,15 @@ public class Compilador{
 
 	private static ArrayList<String> tokens = new ArrayList<String>();
 	private static ArrayList<Simbolo> tablaSimbolos = new ArrayList<>();
-	private static String nombreCodigo = "";//"prog1.p10";
+	private static String nombreCodigo = "error";//"prog1.p10";
 	
 	public static void main(String[] args){
 
 		cargarTokens();//Se cargan los tokens para poder hacer la comparacion y saber si un token es un lexema
-		nombreCodigo = args[0];//entrada con el nombre del archivo a analizar
-
-		 try {//Intentar abrir el archivo .p10
+		
+		//entrada con el nombre del archivo a analizar
+		if(args.length != 0) nombreCodigo = args[0];;
+		try {//Intentar abrir el archivo .p10
 			 FileReader codigo = new FileReader(nombreCodigo);//Leer archivo a analizar
 			 BufferedReader buffer = new BufferedReader(codigo);//Pasar al buffer los datos leidos en "codigo"
 			 AnalizadorLexico analizador = new AnalizadorLexico(buffer); //crear el analizador para poder acceder a los tokens
@@ -116,7 +117,7 @@ public class Compilador{
 		}
 		
 		//A continuacion, se regresa una cadena con toda la informacion del error
-		return nombreCodigo + ": Error en la linea " + (linea + 1) +  " :  Identificador No Valido\n" +
+		return nombreCodigo + ": Error en la linea " + (linea + 1) +  " :  Elemento No Valido\n" +
 		lineas.get(linea) +
 		"\n" + localizacion + "^";
 	}
